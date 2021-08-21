@@ -12,31 +12,31 @@ class TestScreen extends StatefulWidget {
 class _TestScreenState extends State<TestScreen> {
   final TextEditingController _controllerLevel = TextEditingController();
   final TextEditingController _controllerResult = TextEditingController();
-  Future<Class_data>? _futureClass;
-  Future<List>? _futureList;
-
-  /*@override
-  void initState() {
-    _futureList = GetData();
-    super.initState();
-  }*/
-
-  void futureList() {
-    setState(() {
-      _futureList = GetData();
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text('HOME'),
+        actions: [
+          Padding(
+              padding: EdgeInsets.only(right: 20.0),
+              child: GestureDetector(
+                onTap: () {
+                  Navigator.pushNamed(context, '/second');
+                },
+                child: Icon(
+                  Icons.storage,
+                  size: 26.0,
+                ),
+              ))
+        ],
       ),
       body: Container(
-          alignment: Alignment.center,
-          padding: const EdgeInsets.all(8.0),
-          child: (_futureClass == null) ? buildColumn() : buildFutureBuilder()),
+        alignment: Alignment.topCenter,
+        padding: const EdgeInsets.all(8.0),
+        child: buildColumn(),
+      ),
     );
   }
 
@@ -54,46 +54,11 @@ class _TestScreenState extends State<TestScreen> {
         ),
         ElevatedButton(
           onPressed: () {
-            setState(() {
-              _futureClass =
-                  SendData(_controllerLevel.text, _controllerResult.text);
-            });
-            futureList();
+            SendData(_controllerLevel.text, _controllerResult.text);
           },
           child: const Text('Create Data'),
         ),
       ],
-    );
-  }
-
-  FutureBuilder<List> buildFutureBuilder() {
-    return FutureBuilder<List>(
-      future: _futureList,
-      builder: (context, snapshot) {
-        if (snapshot.hasData) {
-          return ListView.builder(
-            itemCount: snapshot.data!.length,
-            itemBuilder: (context, index) {
-              return Container(
-                child: Column(
-                  children: [
-                    ListTile(
-                      title: Text(snapshot.data![index]['level'].toString()),
-                    ),
-                    ListTile(
-                      title: Text(snapshot.data![index]['result'].toString()),
-                    ),
-                  ],
-                ),
-              );
-            },
-          );
-        } else if (snapshot.hasError) {
-          return Text('${snapshot.error}');
-        }
-
-        return const CircularProgressIndicator();
-      },
     );
   }
 }
