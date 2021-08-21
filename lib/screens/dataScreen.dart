@@ -2,16 +2,15 @@ import 'package:flutter/material.dart';
 import '../services/http.dart';
 
 class DataScreen extends StatefulWidget {
-  const DataScreen({ Key? key }) : super(key: key);
+  const DataScreen({Key? key}) : super(key: key);
 
   @override
   _DataScreenState createState() => _DataScreenState();
 }
 
 class _DataScreenState extends State<DataScreen> {
-
-Future<List>? _futureList;
-void initState() {
+  Future<List>? _futureList;
+  void initState() {
     _futureList = GetData();
     super.initState();
   }
@@ -37,17 +36,18 @@ void initState() {
             itemCount: snapshot.data!.length,
             itemBuilder: (context, index) {
               return Container(
-                child: Column(
-                  children: [
-                    ListTile(
-                      leading: const Text('Level'),
-                      title: Text(snapshot.data![index]['level'].toString()),
-                    ),
-                    ListTile(
-                      leading: const Text('Result'),
-                      title: Text(snapshot.data![index]['result'].toString()),
-                    ),
-                  ],
+                child: GestureDetector(
+                  onTap: (){
+                    
+                  },
+                  child: Column(
+                    children: [
+                      ListTile(
+                        title: Text(snapshot.data![index]['level'].toString()),
+                        trailing: Text(snapshot.data![index]['result'].toString()),
+                      ),
+                    ],
+                  ),
                 ),
               );
             },

@@ -35,3 +35,22 @@ Future<List<dynamic>> GetData() async {
   }
 
 }
+
+Future<Class_data> updateFruit(String level, String result, int id) async {
+  final http.Response response = await http.put(
+    Uri.parse('http://10.0.2.2:8000/api/v1/class_data/$id'),
+    headers: <String, String>{
+      'Content-Type': 'application/json; charset=UTF-8',
+    },
+    body: jsonEncode(<String, String>{
+      'level': level,
+      'result': result
+    }),
+  );
+
+  if (response.statusCode == 200) {
+    return Class_data.fromJson(json.decode(response.body));
+  } else {
+    throw Exception('Failed to update album.');
+  }
+}
