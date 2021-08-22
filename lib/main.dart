@@ -1,5 +1,6 @@
 import 'package:classdrive/screens/dataScreen.dart';
 import 'package:classdrive/screens/testscreen.dart';
+import 'package:classdrive/screens/updatedata.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -19,7 +20,8 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       routes: {
         '/': (context) => const TestScreen(),
-        '/second': (context) => const DataScreen()
+        '/second': (context) => const DataScreen(),
+        
       },
     );
   }

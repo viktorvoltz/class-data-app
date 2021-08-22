@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../services/http.dart';
+import 'updatedata.dart';
 
 class DataScreen extends StatefulWidget {
   const DataScreen({Key? key}) : super(key: key);
@@ -37,14 +38,24 @@ class _DataScreenState extends State<DataScreen> {
             itemBuilder: (context, index) {
               return Container(
                 child: GestureDetector(
-                  onTap: (){
-                    
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => UpdateData(
+                          snapshot.data![index]['id'].toString(),
+                          snapshot.data![index]['level'].toString(),
+                          snapshot.data![index]['result'].toString(),
+                        ),
+                      ),
+                    );
                   },
                   child: Column(
                     children: [
                       ListTile(
                         title: Text(snapshot.data![index]['level'].toString()),
-                        trailing: Text(snapshot.data![index]['result'].toString()),
+                        trailing:
+                            Text(snapshot.data![index]['result'].toString()),
                       ),
                     ],
                   ),
