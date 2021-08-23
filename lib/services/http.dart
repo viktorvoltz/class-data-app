@@ -34,6 +34,8 @@ Future<List<dynamic>> GetData() async {
   }
 }
 
+var checker = false;
+
 Future<Class_data> updateData(String level, String result, String id) async {
   final http.Response response = await http.put(
     Uri.parse('http://10.0.2.2:8000/api/v1/class_data/$id'),
@@ -44,10 +46,14 @@ Future<Class_data> updateData(String level, String result, String id) async {
   );
 
   if (response.statusCode == 200) {
-    
+    checker != checker;
     return Class_data.fromJson(json.decode(response.body));
+  
   } else {
     throw Exception('Failed to update album.');
   }
 }
 
+bool checked(){
+  return checker;
+}

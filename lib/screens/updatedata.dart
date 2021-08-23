@@ -42,6 +42,13 @@ class _UpdateDataState extends State<UpdateData> {
             ElevatedButton(
               onPressed: () {
                 updateData(_controllerLevel.text, _controllerResult.text, widget.id);
+                bool checker = checked();
+                if (checker == true) {
+                  final snackBar = SnackBar(
+                    content: Text('Updated'),
+                  );
+                  ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                }
               },
               child: const Text('UPDATE Data'),
             ),
