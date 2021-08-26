@@ -52,11 +52,15 @@ class _DataScreenState extends State<DataScreen> {
                   },
                   child: Column(
                     children: [
-                      ListTile(
-                        title: Text(snapshot.data![index]['level'].toString()),
-                        trailing:
-                            Text(snapshot.data![index]['result'].toString()),
+                      Container(
+                        color: Colors.lightBlue[100],
+                        child: ListTile(
+                          title: Text(snapshot.data![index]['level'].toString()),
+                          trailing:
+                              Text(snapshot.data![index]['result'].toString()),
+                        ),
                       ),
+                      SizedBox(height: 5),
                     ],
                   ),
                 ),
