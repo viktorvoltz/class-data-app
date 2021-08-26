@@ -55,6 +55,23 @@ Future<Class_data> updateData(String level, String result, String id) async {
   }
 }
 
+Future<Class_data> deleteData(String id) async {
+  final http.Response response = await http.delete(
+    Uri.parse('http://10.0.2.2:8000/api/v1/class_data/$id'),
+    headers: <String, String>{
+      'Content-Type': 'application/json; charset=UTF-8',
+    },
+  );
+  checker = false;
+
+  if (response.statusCode == 200) {
+    checker = true;
+    return Class_data.fromJson(json.decode(response.body));
+  } else {
+    throw Exception('Failed to delete');
+  }
+}
+
 bool checked(){
   return checker;
 }

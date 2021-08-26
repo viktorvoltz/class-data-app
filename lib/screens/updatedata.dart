@@ -26,7 +26,23 @@ class _UpdateDataState extends State<UpdateData> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        actions: [
+          IconButton(
+            onPressed: () {
+              deleteData(widget.id);
+              if (checker == true) {
+                  final snackBar = SnackBar(
+                    content: Text('Deleted'),
+                  );
+                  ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                  Navigator.pushNamed(context, '/');
+                }
+            },
+            icon: Icon(Icons.delete),
+          )
+        ],
+      ),
       body: Container(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -41,7 +57,8 @@ class _UpdateDataState extends State<UpdateData> {
             ),
             ElevatedButton(
               onPressed: () {
-                updateData(_controllerLevel.text, _controllerResult.text, widget.id);
+                updateData(
+                    _controllerLevel.text, _controllerResult.text, widget.id);
                 bool checker = checked();
                 if (checker == true) {
                   final snackBar = SnackBar(
