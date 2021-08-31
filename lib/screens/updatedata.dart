@@ -48,9 +48,9 @@ class _UpdateDataState extends State<UpdateData> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             TextField(
-              controller: _controllerLevel,
-              decoration: const InputDecoration(hintText: 'Update Level'),
-            ),
+                controller: _controllerLevel,
+                decoration: const InputDecoration(hintText: 'Update Level', ),
+              ),
             TextField(
               controller: _controllerResult,
               decoration: const InputDecoration(hintText: 'Update Result'),
