@@ -2,9 +2,9 @@ import 'package:classdrive/services/http.dart';
 import 'package:flutter/material.dart';
 
 class UpdateData extends StatefulWidget {
-  String id;
-  String level;
-  String result;
+  final String id;
+  final String level;
+  final String result;
 
   UpdateData(this.id, this.level, this.result);
 
@@ -30,7 +30,8 @@ class _UpdateDataState extends State<UpdateData> {
         actions: [
           IconButton(
             onPressed: () {
-              deleteData(widget.id);
+               deleteData(widget.id);
+              bool checker = checked();
               if (checker == true) {
                   final snackBar = SnackBar(
                     content: Text('Deleted'),
@@ -57,8 +58,9 @@ class _UpdateDataState extends State<UpdateData> {
             ),
             ElevatedButton(
               onPressed: () {
-                updateData(
+                 updateData(
                     _controllerLevel.text, _controllerResult.text, widget.id);
+                    FocusScope.of(context).unfocus();
                 bool checker = checked();
                 if (checker == true) {
                   final snackBar = SnackBar(

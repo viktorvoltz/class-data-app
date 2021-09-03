@@ -32,43 +32,46 @@ class _DataScreenState extends State<DataScreen> {
     return FutureBuilder<List>(
       future: _futureList,
       builder: (context, snapshot) {
-        if (snapshot.hasData) {
-          return ListView.builder(
-            itemCount: snapshot.data!.length,
-            itemBuilder: (context, index) {
-              return Container(
-                child: GestureDetector(
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => UpdateData(
-                          snapshot.data![index]['id'].toString(),
-                          snapshot.data![index]['level'].toString(),
-                          snapshot.data![index]['result'].toString(),
+        if (snapshot.connectionState == ConnectionState.done) {
+          if (snapshot.hasData) {
+            return ListView.builder(
+              itemCount: snapshot.data!.length,
+              itemBuilder: (context, index) {
+                return Container(
+                  child: GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => UpdateData(
+                            snapshot.data![index]['id'].toString(),
+                            snapshot.data![index]['level'].toString(),
+                            snapshot.data![index]['result'].toString(),
+                          ),
                         ),
-                      ),
-                    );
-                  },
-                  child: Column(
-                    children: [
-                      Container(
-                        color: Colors.lightBlue[100],
-                        child: ListTile(
-                          title: Text(snapshot.data![index]['level'].toString()),
-                          trailing:
-                              Text(snapshot.data![index]['result'].toString()),
+                      );
+                    },
+                    child: Column(
+                      children: [
+                        Container(
+                          color: Colors.lightBlue[100],
+                          child: ListTile(
+                            title:
+                                Text(snapshot.data![index]['level'].toString()),
+                            trailing: Text(
+                                snapshot.data![index]['result'].toString()),
+                          ),
                         ),
-                      ),
-                      SizedBox(height: 5),
-                    ],
+                        SizedBox(height: 5),
+                      ],
+                    ),
                   ),
-                ),
-              );
-            },
-          );
-        } else if (snapshot.hasError) {
-          return Text('${snapshot.error}');
+                );
+              },
+            );
+          } else if (snapshot.hasError) {
+            return Text('${snapshot.error}');
+          }
         }
 
         return Center(child: const CircularProgressIndicator());

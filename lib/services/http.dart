@@ -44,14 +44,15 @@ Future<Class_data> updateData(String level, String result, String id) async {
     },
     body: jsonEncode(<String, String>{'level': level, 'result': result}),
   );
-  checker = false;
+  
 
   if (response.statusCode == 200) {
+    print(response.statusCode);
     checker = true;
     return Class_data.fromJson(json.decode(response.body));
   
   } else {
-    throw Exception('Failed to update album.');
+    throw Exception('Failed to update.');
   }
 }
 
@@ -62,7 +63,7 @@ Future<Class_data> deleteData(String id) async {
       'Content-Type': 'application/json; charset=UTF-8',
     },
   );
-  checker = false;
+  
 
   if (response.statusCode == 200) {
     checker = true;
