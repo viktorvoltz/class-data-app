@@ -34,7 +34,7 @@ Future<List<dynamic>> GetData() async {
   }
 }
 
-var checker = false;
+bool _checker = false;
 
 Future<Class_data> updateData(String level, String result, String id) async {
   final http.Response response = await http.put(
@@ -48,10 +48,11 @@ Future<Class_data> updateData(String level, String result, String id) async {
 
   if (response.statusCode == 200) {
     print(response.statusCode);
-    checker = true;
+    _checker = true;
     return Class_data.fromJson(json.decode(response.body));
   
   } else {
+    _checker = false;
     throw Exception('Failed to update.');
   }
 }
@@ -66,13 +67,15 @@ Future<Class_data> deleteData(String id) async {
   
 
   if (response.statusCode == 200) {
-    checker = true;
+    _checker = true;
     return Class_data.fromJson(json.decode(response.body));
+    
   } else {
+    _checker = false;
     throw Exception('Failed to delete');
   }
 }
 
 bool checked(){
-  return checker;
+  return _checker;
 }

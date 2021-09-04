@@ -38,6 +38,11 @@ class _UpdateDataState extends State<UpdateData> {
                   );
                   ScaffoldMessenger.of(context).showSnackBar(snackBar);
                   Navigator.pushNamed(context, '/');
+                }else{
+                  final snackBar = SnackBar(
+                    content: Text('Not Deleted'),
+                  );
+                  ScaffoldMessenger.of(context).showSnackBar(snackBar);
                 }
             },
             icon: Icon(Icons.delete),
@@ -65,6 +70,11 @@ class _UpdateDataState extends State<UpdateData> {
                 if (checker == true) {
                   final snackBar = SnackBar(
                     content: Text('Updated'),
+                  );
+                  ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                }else{
+                  final snackBar = SnackBar(
+                    content: Text('Not Updated'),
                   );
                   ScaffoldMessenger.of(context).showSnackBar(snackBar);
                 }
