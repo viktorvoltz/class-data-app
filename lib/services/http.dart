@@ -67,10 +67,12 @@ Future<Class_data> deleteData(String id) async {
   
 
   if (response.statusCode == 200) {
+    print('statuscode is 200');
     _checker = true;
     return Class_data.fromJson(json.decode(response.body));
     
   } else {
+    print('statuscode is NOT 200');
     _checker = false;
     throw Exception('Failed to delete');
   }

@@ -38,7 +38,7 @@ class _UpdateDataState extends State<UpdateData> {
                   );
                   ScaffoldMessenger.of(context).showSnackBar(snackBar);
                   Navigator.pushNamed(context, '/');
-                }else{
+                }else if(checker == false){
                   final snackBar = SnackBar(
                     content: Text('Not Deleted'),
                   );
