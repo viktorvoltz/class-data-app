@@ -34,6 +34,11 @@ class _UpdateDataState extends State<UpdateData> {
               bool checker = checked();
               if (checker == true) {
                   final snackBar = SnackBar(
+                    behavior: SnackBarBehavior.floating,
+                    elevation: 5.0,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
                     content: Text('Deleted'),
                   );
                   ScaffoldMessenger.of(context).showSnackBar(snackBar);
@@ -69,6 +74,11 @@ class _UpdateDataState extends State<UpdateData> {
                 bool checker = checked();
                 if (checker == true) {
                   final snackBar = SnackBar(
+                    behavior: SnackBarBehavior.floating,
+                    elevation: 5.0,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
                     content: Text('Updated'),
                   );
                   ScaffoldMessenger.of(context).showSnackBar(snackBar);
