@@ -1,6 +1,6 @@
 # classdrive
 
-This is a full stack flutter project intended to store data (and/or results) of my class mates for easy access.
+This is a full stack flutter project storing and retrieve data in a sql database and node server. intended for ause as a school database project for results
 
 ## detail
 
