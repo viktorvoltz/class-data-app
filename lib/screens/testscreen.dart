@@ -54,7 +54,7 @@ class _TestScreenState extends State<TestScreen> {
         ),
         ElevatedButton(
           onPressed: () {
-            SendData(_controllerLevel.text, _controllerResult.text);
+            sendData(_controllerLevel.text, _controllerResult.text);
             _controllerLevel.clear();
             _controllerResult.clear();
             FocusScope.of(context).unfocus();

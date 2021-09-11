@@ -3,7 +3,7 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 import '../model/class_data.dart';
 
-Future<Class_data> SendData(String level, String result) async {
+Future<Class_data> sendData(String level, String result) async {
   final response = await http.post(
     Uri.parse('http://10.0.2.2:8000/api/v1/class_data'),
     headers: <String, String>{
@@ -23,7 +23,7 @@ Future<Class_data> SendData(String level, String result) async {
 
 List<dynamic> dataList = [];
 
-Future<List<dynamic>> GetData() async {
+Future<List<dynamic>> getData() async {
   final response =
       await http.get(Uri.parse('http://10.0.2.2:8000/api/v1/class_data'));
   if (response.statusCode == 200) {

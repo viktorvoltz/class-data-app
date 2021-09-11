@@ -12,7 +12,7 @@ class DataScreen extends StatefulWidget {
 class _DataScreenState extends State<DataScreen> {
   Future<List>? _futureList;
   void initState() {
-    _futureList = GetData();
+    _futureList = getData();
     super.initState();
   }
 
