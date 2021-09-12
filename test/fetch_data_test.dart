@@ -10,7 +10,7 @@ import 'fetch_data_test.mocks.dart';
 @GenerateMocks([http.Client])
 void main() {
   group('fetchData', () {
-    test('returns an Album if the http call completes successfully', () async {
+    test('returns List<dynamic> if the http call completes successfully', () async {
       final client = MockClient();
 
       when(
@@ -21,14 +21,13 @@ void main() {
         (_) async => http.Response('{"level": 100, "result": 100}', 200),
       );
 
-      expect(await sendData('100', '100'), isA<Class_data>());
+      expect(await getData(), isA<List<dynamic>>());
     });
 
     test('throws an exception if the http call completes with an error', () {
       final client = MockClient();
 
-      // Use Mockito to return an unsuccessful response when it calls the
-      // provided http.Client.
+      
       when(
         client.get(
           Uri.parse('http://10.0.2.2:8000/api/v1/class_data'),
@@ -37,7 +36,7 @@ void main() {
         (_) async => http.Response('Not Found', 404),
       );
 
-      expect(sendData('100', '100'), throwsException);
+      expect(getData(), throwsException);
     });
   });
 }
