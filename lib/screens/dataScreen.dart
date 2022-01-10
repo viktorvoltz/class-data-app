@@ -25,6 +25,9 @@ class _DataScreenState extends State<DataScreen> {
       body: Container(
         child: buildFutureBuilder(),
       ),
+      floatingActionButton:
+          FloatingActionButton(onPressed: () {}, child: Icon(Icons.add)),
+      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
     );
   }
 
