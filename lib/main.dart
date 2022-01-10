@@ -19,8 +19,8 @@ class MyApp extends StatelessWidget {
       ),
       initialRoute: '/',
       routes: {
-        '/': (context) => const TestScreen(),
-        '/second': (context) => const DataScreen(),
+        '/': (context) => const DataScreen(),
+        '/second': (context) => const TestScreen(),
         
       },
     );
