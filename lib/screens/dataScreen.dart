@@ -1,3 +1,4 @@
+import 'package:classdrive/screens/testscreen.dart';
 import 'package:flutter/material.dart';
 import '../services/http.dart';
 import 'updatedata.dart';
@@ -25,8 +26,16 @@ class _DataScreenState extends State<DataScreen> {
       body: Container(
         child: buildFutureBuilder(),
       ),
-      floatingActionButton:
-          FloatingActionButton(onPressed: () {}, child: Icon(Icons.add)),
+      floatingActionButton: FloatingActionButton(
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => TestScreen(),
+              ),
+            );
+          },
+          child: Icon(Icons.add)),
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
     );
   }
