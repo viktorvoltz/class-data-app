@@ -23,7 +23,7 @@ class _TestScreenState extends State<TestScreen> {
               padding: EdgeInsets.only(right: 20.0),
               child: GestureDetector(
                 onTap: () {
-                  Navigator.pushNamed(context, '/second');
+                  Navigator.pushNamed(context, '/');
                 },
                 child: Icon(
                   Icons.storage,

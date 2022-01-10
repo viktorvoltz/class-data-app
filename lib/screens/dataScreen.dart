@@ -82,7 +82,7 @@ class _DataScreenState extends State<DataScreen> {
               },
             );
           } else if (snapshot.hasError) {
-            return Text('${snapshot.error}');
+            return Text('can`t fetch data');
           }
         }
 
