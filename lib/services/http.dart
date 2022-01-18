@@ -15,8 +15,25 @@ Future<Class_data> sendData(String level, String result) async {
     }),
   );
   if (response.statusCode == 201) {
+    print(jsonDecode(response.body));
     return Class_data.fromJson(jsonDecode(response.body));
   } else {
+    throw Exception('Failed to create data.');
+  }
+}
+
+Future<void> uploadFIle(String fileName) async{
+  final response = await http.post(
+    Uri.parse('http://10.0.2.2:8000/api/v1/class_data/upload'),
+    body: jsonEncode(
+      {
+        'fileName': fileName
+      }
+    )
+  );
+  if (response.statusCode == 201) {
+    print(jsonDecode(response.body));
+  }else {
     throw Exception('Failed to create data.');
   }
 }
