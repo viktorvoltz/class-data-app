@@ -20,7 +20,7 @@ class ClassData extends ChangeNotifier{
 
   List<ClassData> items = [];
 
-  uploadFileFunction(String fileName){
+  uploadFileFunction(fileName){
     uploadFIle(fileName);
 
 

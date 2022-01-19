@@ -22,10 +22,13 @@ Future<Class_data> sendData(String level, String result) async {
   }
 }
 
-Future<void> uploadFIle(String fileName) async{
+Future<void> uploadFIle(fileName) async{
   final response = await http.post(
     Uri.parse('http://10.0.2.2:8000/api/v1/class_data/upload'),
-    body: jsonEncode(
+    headers: <String, String>{
+      'Content-Type': 'application/json; charset=UTF-8',
+    },
+    body: jsonEncode(<String, dynamic>
       {
         'fileName': fileName
       }
