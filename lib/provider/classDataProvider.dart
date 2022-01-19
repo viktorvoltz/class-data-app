@@ -1,17 +1,29 @@
+import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import '../services/http.dart';
 
-class ClassData {
-  final String publicId;
-  final String resourceType;
-  final String createdAt;
-  final String secureUrl;
-  final String originalFilename;
+
+class ClassData extends ChangeNotifier{
+  final String? publicId;
+  final String? resourceType;
+  final String? createdAt;
+  final String? secureUrl;
+  final String? originalFilename;
 
   ClassData({
-    required this.publicId,
-    required this.resourceType,
-    required this.createdAt,
-    required this.secureUrl,
-    required this.originalFilename,
+    this.publicId,
+    this.resourceType,
+    this.createdAt,
+    this.secureUrl,
+    this.originalFilename,
   });
+
+  List<ClassData> items = [];
+
+  uploadFileFunction(String fileName){
+    uploadFIle(fileName);
+
+
+  }
 
 }

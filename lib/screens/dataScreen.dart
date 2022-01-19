@@ -1,4 +1,5 @@
 import 'package:classdrive/screens/testscreen.dart';
+import 'package:classdrive/screens/uploadScreen.dart';
 import 'package:flutter/material.dart';
 import '../services/http.dart';
 import 'updatedata.dart';
@@ -26,17 +27,39 @@ class _DataScreenState extends State<DataScreen> {
       body: Container(
         child: buildFutureBuilder(),
       ),
-      floatingActionButton: FloatingActionButton(
-          onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => TestScreen(),
-              ),
-            );
-          },
-          child: Icon(Icons.add)),
-      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
+      floatingActionButton: Padding(
+        padding: EdgeInsets.only(top: 500),
+        child: Column(
+          children: [
+            FloatingActionButton(
+              heroTag: null,
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => TestScreen(),
+                  ),
+                );
+              },
+              child: Icon(Icons.add),
+            ),
+            SizedBox(height: 10,),
+            FloatingActionButton(
+              heroTag: null,
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => UploadFunction(),
+                  ),
+                );
+              },
+              child: Icon(Icons.upload),
+            ),
+          ],
+        ),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
     );
   }
 
